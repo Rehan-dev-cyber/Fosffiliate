@@ -1,0 +1,1075 @@
+:root {
+  --primary-color: #2f4d69;
+  --secondary-color: #5de0a8;
+  --background-color: rgb(255, 254, 254);
+  --text-color: #222;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 60px; /* Adjusted width to fit text */
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding-top: 20px;
+  cursor: pointer;
+  transition: width 0.5s ease;
+  border-radius: 0 10px 10px 0; /* Rounded edges */
+}
+
+.sidebar.open {
+  width: 100px; /* Reduced width for open state */
+}
+
+.sidebar-content {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.sidebar.open .sidebar-content {
+  opacity: 1;
+}
+
+.main-content {
+  margin-left: 60px; /* Updated margin to match closed sidebar width */
+  transition: filter 0.4s ease, margin-left 0.4s ease, opacity 0.4s ease-in-out;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.sidebar.open ~ .main-content {
+  margin-left: 150px;
+  filter: blur(5px);
+  opacity: 0.8;
+}
+
+.navbar {
+  background-color: #4ed396;
+  padding: 2rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease, box-shadow 0.3s, color 0.3s ease;
+  border: none;
+  border-radius: 10px; /* Rounded edges */
+  animation: slideInFromTop 0.6s ease-in-out, pulse 3s infinite;
+}
+
+.sidebar.open ~ .navbar {
+  margin-left: 150px;
+  margin-right: 150px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.navbar:hover {
+  transform: translateY(5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+.navbar .icon {
+  font-size: 5rem;
+  color: var(--primary-color);
+  transition: transform 0.3s ease;
+  animation: rotate 8s linear infinite;
+}
+
+body.loaded .navbar {
+  transform: translateY(0);
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  transition: filter 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.sidebar.open ~ .main-content .content {
+  filter: blur(5px);
+  opacity: 1;
+}
+
+.card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  min-width: 200px;
+  text-align: center;
+  border: 1px solid var(--primary-color);
+  animation: fadeIn 0.5s ease-in-out, float 8s ease-in-out infinite, bounceIn 0.6s ease-in-out;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background-color: #f5f5f5;
+  color: var(--primary-color);
+  animation: scaleUp 0.4s ease-in-out;
+}
+
+.email-count {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  animation: pulse 3s infinite;
+}
+
+.google-signin-container {
+  text-align: center;
+  padding: 1rem;
+}
+
+.google-signin-btn {
+  background-color: var(--background-color);
+  border: 2px solid var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--primary-color);
+  transition: transform 0.4s ease, background 0.4s ease;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite, lightSpeedIn 0.6s ease-in-out;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.google-signin-btn:hover {
+  background: linear-gradient(45deg, #27d17c, #5de0a8);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(39, 209, 124, 0.6);
+}
+
+.table-container {
+  margin: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out, slideInFromLeft 0.5s ease-in-out;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--background-color);
+  animation: fadeIn 0.4s ease-in-out, slideInFromLeft 0.4s ease-in-out;
+}
+
+th {
+  background-color: var(--primary-color);
+  color: white;
+  animation: fadeIn 0.4s ease-in-out, slideInFromTop 0.4s ease-in-out;
+}
+
+tr:hover {
+  background-color: rgba(39, 209, 124, 0.15);
+  color: var(--primary-color);
+  animation: pulse 0.6s ease-in-out;
+}
+
+.icon:active {
+  transform: rotate(360deg);
+}
+
+.sidebar:hover .icon {
+  animation: wiggle 0.6s ease-in-out, rotate 8s linear infinite;
+}
+
+.blur {
+  filter: blur(5px);
+}
+
+.loading {
+  animation: spin 1s linear infinite;
+}
+
+.loading-state {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-state::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: fadeInOut 2s infinite;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes lightSpeedIn {
+  0% {
+    transform: translateX(100%) skewX(-30deg);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-20%) skewX(30deg);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(0%) skewX(-15deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0%) skewX(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-20%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes lightSpeedIn {
+  0% {
+    transform: translateX(100%) skewX(-30deg);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-20%) skewX(30deg);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(0%) skewX(-15deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0%) skewX(0deg);
+    opacity: 1;
+  }
+}
+/* Dark Mode Styles with Navy Blue and Blue Accents */
+body.dark-mode {
+  --primary-color: #1E1E1E;      /* Sidebar background (no blue accents) */
+  --secondary-color: #9A6DFD;     /* Muted purple accent */
+  --background-color: #121212;    /* Main background color */
+  --text-color: #FFFFFF;          /* White text for all text elements */
+  --muted-green: #19ec20;         /* Muted green for numbers */
+  --muted-teal: #26C6DA;          /* Softer teal accent */
+  --muted-orange: #FF7043;        /* Softer neon orange for accents */
+  --muted-blue: #2196F3;          /* Neon blue for accents */
+  --navy-blue: #001f3d;           /* Navy blue for elements */
+  --blue-hover: #1976D2;          /* Darker blue for hover effects */
+}
+
+body.dark-mode .sidebar {
+  background-color: var(--primary-color);
+  color: var(--text-color); /* White text in sidebar */
+}
+
+body.dark-mode .navbar {
+  background-color: var(--navy-blue); /* Navy blue navbar background */
+  color: var(--text-color); /* White text in navbar */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .main-content,
+body.dark-mode .table-container,
+body.dark-mode .card {
+  background-color: #1E1E1E;
+  color: var(--text-color); /* White text in cards and table */
+  border: 1px solid #292929;
+}
+
+body.dark-mode .card:hover {
+  background-color: #292929;
+  color: var(--muted-orange); /* Muted orange for hover effect */
+  border-color: var(--muted-blue); /* Blue border on hover */
+}
+
+body.dark-mode .email-count {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--muted-green); /* Muted green for numbers */
+  animation: softNeonGlow 1.5s ease-in-out infinite alternate;
+}
+
+body.dark-mode .google-signin-btn {
+  background-color: #292929;
+  color: var(--text-color); /* White text on buttons */
+  border-color: var(--secondary-color);
+}
+
+body.dark-mode .google-signin-btn:hover {
+  background-color: var(--secondary-color);
+  color: #121212;
+  box-shadow: 0 0 10px rgba(38, 198, 218, 0.3); /* Softer teal glow on hover */
+}
+
+body.dark-mode .navbar:hover {
+  background-color: var(--navy-blue); /* Navy blue hover effect on navbar */
+  color: var(--muted-blue); /* Blue color for navbar hover */
+}
+
+body.dark-mode th, 
+body.dark-mode td {
+  border-bottom: 1px solid #292929;
+  color: var(--text-color); /* White text in table headers and cells */
+}
+
+body.dark-mode .google-signin-btn:focus,
+body.dark-mode .google-signin-btn:hover {
+  background-color: var(--muted-blue); /* Blue accent on hover */
+  border-color: var(--muted-blue);
+}
+
+/* Soft Neon Glow Animation */
+@keyframes softNeonGlow {
+  0% {
+    text-shadow: 0 0 3px var(--muted-green), 0 0 6px var(--muted-green), 
+                 0 0 12px var(--muted-green), 0 0 20px var(--muted-teal),
+                 0 0 30px var(--muted-teal), 0 0 40px var(--muted-blue);
+  }
+  100% {
+    text-shadow: 0 0 6px var(--muted-green), 0 0 10px var(--muted-green), 
+                 0 0 15px var(--muted-green), 0 0 25px var(--muted-teal),
+                 0 0 40px var(--muted-teal), 0 0 60px var(--muted-blue);
+  }
+}
+
+/* Dark Mode Toggle Button - Modern Light Mode Style */
+body.dark-mode .toggle-dark-mode-btn {
+  background-color: var(--primary-color); /* Match the sidebar/nav background */
+  color: var(--text-color); /* White text */
+  border: 2px solid var(--muted-blue); /* Blue border for consistency with other elements */
+  border-radius: 5px; /* Rounded corners for a sleek look */
+  padding: 12px 25px; /* Adequate padding for a modern button size */
+  font-size: 1.1rem; /* Slightly larger font size for prominence */
+  cursor: pointer;
+  position: fixed;
+  top: 20px; /* Positioned at the top-right of the page */
+  right: 20px; /* Positioned at the top-right of the page */
+  z-index: 1000; /* Ensure it stays above other content */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+body.dark-mode .toggle-dark-mode-btn:hover {
+  background-color: var(--muted-blue); /* Light blue background on hover */
+  color: #121212; /* Change text color to dark for contrast */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for hover effect */
+}
+
+body.dark-mode .toggle-dark-mode-btn:focus {
+  outline: none; /* Remove default outline on focus */
+  box-shadow: 0 0 10px var(--muted-blue); /* Blue outline when focused */
+}
+.toggle-dark-mode-btn {
+  background-color: var(--primary-color); /* Match the sidebar/nav background */
+  color: var(--text-color); /* White text */
+  border: 2px solid var(--muted-blue); /* Blue border for consistency */
+  border-radius: 5px; /* Rounded corners for a sleek look */
+  padding: 12px 25px; /* Adequate padding for a modern button size */
+  font-size: 1.1rem; /* Slightly larger font size for prominence */
+  cursor: pointer;
+  position: fixed;
+  top: 20px; /* Positioned at the top-right of the page */
+  right: 20px; /* Positioned at the top-right of the page */
+  z-index: 1000; /* Ensure it stays above other content */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.toggle-dark-mode-btn:hover {
+  background-color: var(--muted-blue); /* Light blue background on hover */
+  color: #121212; /* Change text color to dark for contrast */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for hover effect */
+}
+
+.toggle-dark-mode-btn:focus {
+  outline: none; /* Remove default outline on focus */
+  box-shadow: 0 0 10px var(--muted-blue); /* Blue outline when focused */
+}
+.toggle-dark-mode-btn {
+  background-color: var(--primary-color); /* Match the sidebar/nav background */
+  color: var(--text-color); /* White text */
+  border: 2px solid var(--muted-blue); /* Blue border for consistency */
+  border-radius: 5px; /* Rounded corners for a sleek look */
+  padding: 12px 25px; /* Adequate padding for a modern button size */
+  font-size: 1.1rem; /* Slightly larger font size for prominence */
+  cursor: pointer;
+  position: fixed;
+  top: 20px; /* Positioned at the top-right of the page */
+  right: 20px; /* Positioned at the top-right of the page */
+  z-index: 1000; /* Ensure it stays above other content */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.toggle-dark-mode-btn:hover {
+  background-color: var(--muted-blue); /* Light blue background on hover */
+  color: #121212; /* Change text color to dark for contrast */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for hover effect */
+}
+
+.toggle-dark-mode-btn:focus {
+  outline: none; /* Remove default outline on focus */
+  box-shadow: 0 0 10px var(--muted-blue); /* Blue outline when focused */
+}
+body.dark-mode .toggle-dark-mode-btn {
+  background-color: var(--background-color);
+  border: 2px solid var(--secondary-color);
+  color: var(--text-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.4s ease, background 0.4s ease;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite, lightSpeedIn 0.6s ease-in-out;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+body.dark-mode .toggle-dark-mode-btn:hover {
+  background: linear-gradient(45deg, var(--muted-blue), var(--muted-teal));
+  color: #121212;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(38, 198, 218, 0.6);
+}
+
+body.dark-mode .toggle-dark-mode-btn:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--muted-blue);
+}
+body.dark-mode .toggle-dark-mode-btn {
+  background-color: #ffffff;
+  border: 2px solid var(--secondary-color);
+  color: var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.4s ease, background 0.4s ease;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite, lightSpeedIn 0.6s ease-in-out;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+body.dark-mode .toggle-dark-mode-btn:hover {
+  background: linear-gradient(45deg, var(--muted-blue), var(--muted-teal));
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(38, 198, 218, 0.6);
+}
+
+body.dark-mode .toggle-dark-mode-btn:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--muted-blue);
+}
+/* Sidebar profile picture animation */
+.profile-pic {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  transition: transform 0.5s ease;
+}
+.sidebar:hover .profile-pic {
+  transform: scale(1.1) rotate(15deg);
+}
+
+
+
+/* Pulse effect for the Google Sign-In button */
+@keyframes pulseButton {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(39, 209, 124, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(39, 209, 124, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(39, 209, 124, 0.3);
+  }
+}
+.google-signin-btn {
+  animation: pulseButton 2.5s ease-in-out infinite;
+}
+
+/* Sidebar text bounce */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+.sidebar p {
+  animation: bounce 2s ease-in-out infinite;
+}
+/* Shake animation */
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+.shake {
+  animation: shake 0.5s; /* Shake on click */
+}
+
+/* Heartbeat effect on email count */
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  60% {
+    transform: scale(1);
+  }
+}
+.email-count {
+  animation: heartbeat 2s ease-in-out infinite; /* Continuous heartbeat */
+}
+
+
+/* Breathing effect for navbar */
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+.navbar {
+  animation: breathing 4s ease-in-out infinite;
+}
+/* Wiggle animation */
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+.wiggle {
+  animation: wiggle 0.5s ease;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.bounce {
+  animation: bounce 1s ease;
+}
+/* Sparkle effect on Google Sign-In button */
+@keyframes sparkle {
+  0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+  100% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
+}
+.google-signin-btn:hover {
+  animation: sparkle 1s ease infinite;
+  background: linear-gradient(45deg, #27d17c, #5de0a8, #27d17c);
+  background-size: 200% 200%;
+  transition: background-position 0.5s ease;
+  background-position: 100% 0;
+}
+
+
+
+/* Pop effect for sidebar icons */
+.sidebar .icon {
+  transition: transform 0.3s ease;
+}
+.sidebar .icon:hover {
+  transform: scale(1.2) rotate(10deg);
+  color: #f0db4f; /* Add some color change for emphasis */
+}
+/* Confetti burst animation */
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #ffd700;
+  opacity: 1;
+  border-radius: 50%;
+  animation: confettiFall 1s ease forwards;
+}
+
+@keyframes confettiFall {
+  0% { opacity: 1; transform: translateY(0) rotate(0); }
+  100% { opacity: 0; transform: translateY(100px) rotate(360deg); }
+}
+
+/* Wiggle animation (already defined in previous steps) */
+/* Highlight selected row */
+.highlight-row {
+  background-color: rgba(39, 209, 124, 0.2);
+  transition: background-color 0.3s ease;
+}
+/* Glowing border on row hover */
+tbody tr:hover {
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(93, 224, 168, 0.6);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Shake animation for icons on hover */
+@keyframes iconShake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  20% { transform: translate(-1px, -2px) rotate(-1deg); }
+  40% { transform: translate(-3px, 0px) rotate(1deg); }
+  60% { transform: translate(3px, 2px) rotate(0deg); }
+  80% { transform: translate(1px, -1px) rotate(-1deg); }
+  100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+.icon:hover {
+  animation: iconShake 0.4s ease;
+}
+
+/* Fade-in cells sequentially on load */
+@keyframes fadeInCell {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+tbody td {
+  opacity: 0;
+  animation: fadeInCell 0.5s ease forwards;
+}
+tbody tr:nth-child(1) td { animation-delay: 0.2s; }
+tbody tr:nth-child(2) td { animation-delay: 0.4s; }
+tbody tr:nth-child(3) td { animation-delay: 0.6s; }
+/* Continue for additional rows */
+/* Floating Elements Animation */
+
+/* Gradient Wave Animation */
+@keyframes gradientWave {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Ripple Effect Animation */
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(93, 224, 168, 0.3);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(93, 224, 168, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(93, 224, 168, 0);
+  }
+}
+
+/* Smooth Reveal Animation */
+@keyframes smoothReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+
+
+/* Enhanced Navbar Animation */
+.navbar {
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color),
+    var(--primary-color)
+  );
+  background-size: 200% 200%;
+  animation: gradientWave 15s ease infinite;
+}
+
+/* Interactive Table Rows */
+tr {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+tr:hover {
+  transform: scale(1.01) translateX(5px);
+  box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.1);
+  animation: ripple 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+/* Enhanced Button States */
+.google-signin-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.google-signin-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+.google-signin-btn:hover::after {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Smooth Page Load Animations */
+.main-content {
+  opacity: 0;
+  animation: smoothReveal 0.8s ease-out forwards;
+}
+
+.card, .table-container {
+  opacity: 0;
+  animation: smoothReveal 0.8s ease-out forwards;
+}
+
+
+
+/* Dark Mode Enhancements */
+body.dark-mode .card::before {
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(154, 109, 253, 0.1),
+    transparent
+  );
+}
+
+body.dark-mode .navbar {
+  background: linear-gradient(
+    45deg,
+    var(--navy-blue),
+    var(--muted-blue),
+    var(--navy-blue)
+  );
+  background-size: 200% 200%;
+}
+
+/* Inertia Scrolling Effect */
+.main-content {
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Enhanced Focus States */
+button:focus, 
+input:focus {
+  outline: none;
+  animation: ripple 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Loading State Enhancement */
+.loading-state::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(93, 224, 168, 0.2),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+/* Performance Optimizations */
+* {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.sidebar .icon:active {
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.2);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+body {
+  opacity: 0;
+  animation: fadeInBody 1s ease-in-out forwards;
+}
+
+@keyframes fadeInBody {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+.google-signin-btn:active::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(93, 224, 168, 0.4);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: rippleEffect 0.6s ease-out;
+  pointer-events: none;
+}
+
+@keyframes rippleEffect {
+  to {
+      transform: scale(3);
+      opacity: 0;
+  }
+}
+.sidebar:hover {
+  animation: pulseSidebar 1.5s ease-in-out infinite;
+}
+
+
+
+@keyframes floatEffect {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-5px);
+  }
+}
